@@ -44,6 +44,8 @@ class LinkedList:
       else:
         temp = self.head
         while(temp.next_node is not None):
-          prev = temp
+          if temp.next_node == self.tail:
+            break
           temp = temp.next_node
-        prev.next_node = None
+        temp.next_node = None
+        self.tail = temp
