@@ -38,13 +38,12 @@ class LinkedList:
             # we're at the end of the linked list 
             current.set_next(new_node)
 
-    def remove_from_tail(self, value):
-        new_node = Node(value)
-
-        if not self.tail:
-          self.tail = new_node
-        else:
-          current = self.tail
-          while current.get_next() is not None:
-            current = current.get_next()
-          current.set_next(new_node)
+    def remove_from_tail(self):
+      if not self.head:
+        return None
+      else:
+        temp = self.head
+        while(temp.next_node is not None):
+          prev = temp
+          temp = temp.next_node
+        prev.next_node = None
