@@ -37,7 +37,7 @@ class LinkedList:
             # we're at the end of the linked list 
             current.set_next(new_node)
 
-    def remove_from_head(self):
+    def remove_from_tail(self):
         # what if the list is empty?
         if not self.head:
             return None
