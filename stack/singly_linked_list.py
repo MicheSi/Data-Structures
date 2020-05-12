@@ -42,10 +42,14 @@ class LinkedList:
       if not self.head:
         return None
       else:
-        temp = self.head
-        while(temp.next_node is not None):
-          if temp.next_node == self.tail:
-            break
-          temp = temp.next_node
-        temp.next_node = None
-        self.tail = temp
+        current = self.head
+        prev = current
+
+        while current.get_next() is not None:
+          prev = current
+          current = current.get_next()
+        
+        self.tail = prev
+        prev.set_next(None)
+
+        return current.value
