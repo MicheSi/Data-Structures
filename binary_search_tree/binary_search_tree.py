@@ -104,10 +104,10 @@ class BSTNode:
 
         queue = []
 
-        queue.append(self.value)
+        queue.append(node)
 
         while(len(queue) > 0):
-            print queue[0].value
+            print(queue[0].value)
             node = queue.pop(0)
 
             if node.left is not None:
@@ -125,8 +125,23 @@ class BSTNode:
         # while stack not empty node = pop top of stack
         # print
         # add children to stack
+        if self.value == None:
+            return
         
-        pass
+        stack = []
+
+        stack.append(node)
+
+        while(len(stack) > 0):
+            print(stack[0].value)
+            node = stack.pop()
+
+            if node.left is not None:
+                stack.append(node.left)
+            
+            if node.right is not None:
+                stack.append(node.right)
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required
