@@ -47,11 +47,14 @@ class LinkedList:
   def contains(self, value):
     current = self.head
 
+    if current is None:
+      return
+
     while current is not None:
       if current.get_value() == value:
         return True
       current = current.get_next()
-      return False
+    return False
     
   def remove_head(self):
     # what if the list is empty?
@@ -61,17 +64,28 @@ class LinkedList:
     else:
       # we want to return the value at the current head 
       value = self.head.get_value()
-      # remove the value at the head 
-      # update self.head 
-      self.head = self.head.get_next()
-      return value
+
+      if self.head == self.tail:
+        self.head = None
+        self.tail = None
+        return value
+      else:
+        self.head = self.head.get_next()
+        return value
 
   def get_max(self):
     current = self.head
-    max = self.head.get_value()
+    value = current.value
 
-    while current is not None:
-      if current.value > max:
-        max = current.value
+    if not self.head and not self.tail:
+      return
+    if self.head == self.tail:
+      return current.value
+    
+    while current.get_next() is not None:
+      if current.value > value:
+        value = current.value
         current = current.get_next()
-    return max
+      else:
+        current = current.get_next
+    return value
