@@ -1,6 +1,7 @@
 from queue import Queue
 from singly_linked_list import LinkedList
 from stack import Stack
+from sll_queue import LinkedList2
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -127,20 +128,33 @@ class BSTNode(object):
         # print
         # add children to stack
         
-        stack = []
+        # stack = []
 
-        stack.append(self)
+        # stack.append(node)
+
+        # while len(stack) > 0:
+        #     current = stack.pop()
+        #     print(current.value)
+
+        #     if current.left:
+        #         stack.append(current.left)
+            
+        #     if current.right:
+        #         stack.append(current.right)
+
+        stack = Stack()
+
+        stack.push(node)
 
         while len(stack) > 0:
-            node = stack.pop()
-            print(node.value)
+            current = stack.pop()
+            print(current.value)
 
-            if node.left:
-                stack.append(node.left)
+            if current.left:
+                stack.push(current.left)
             
-            if node.right:
-                stack.append(node.right)
-
+            if current.right:
+                stack.push(current.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -164,3 +178,17 @@ class BSTNode(object):
                 self.right.post_order_dft(node.right)
 
             print(node.value)
+
+
+bst = BSTNode(1)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+
+bst.dft_print(bst)
+
+

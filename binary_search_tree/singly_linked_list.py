@@ -17,8 +17,9 @@ class Node:
 
 class LinkedList:
     def __init__(self):
-        # first node in the list 
-        self.head = None
+        # first node in the list
+        self.head = None 
+        self.tail = None
 
     def add_to_end(self, value):
         # regardless of if the list is empty or not, we need to wrap the value in a Node 
@@ -38,14 +39,17 @@ class LinkedList:
             current.set_next(new_node)
 
     def remove_from_tail(self):
-        # what if the list is empty?
-        if not self.head:
-            return None
-        # what if it isn't empty?
-        else:
-            # we want to return the value at the current head 
-            value = self.head.get_value()
-            # remove the value at the head 
-            # update self.head 
-            self.head = self.head.get_next()
-            return value
+      if not self.head:
+        return None
+      else:
+        current = self.head
+        prev = current
+
+        while current.get_next() is not None:
+          prev = current
+          current = current.get_next()
+        
+        self.tail = prev
+        prev.set_next(None)
+
+        return current.value
