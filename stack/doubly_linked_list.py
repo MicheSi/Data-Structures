@@ -107,8 +107,6 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        if not self.head and not self.tail:
-            return None
         self.length -= 1
         if self.head is self.tail:
             self.head = None

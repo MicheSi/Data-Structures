@@ -1,4 +1,4 @@
-from singly_linked_list import LinkedList
+from sll_queue import LinkedList2
 
 import sys
 sys.path.append('../stack')
@@ -38,41 +38,41 @@ Stretch: What if you could only use instances of your Stack class to implement t
 #             self.storage.pop()
 
 # With linked list
-# class Queue:
-#     def __init__(self):
-#         self.size = 0
-#         self.storage = LinkedList()
-    
-#     def __len__(self):
-#         return self.size
-
-#     def enqueue(self, value):
-#         self.storage.add_to_end(value)
-#         self.size += 1
-
-#     def dequeue(self):
-#         if self.size != 0:
-#             self.size -= 1
-#             return self.storage.remove_from_tail()
-#         else:
-#             return None
-
-# Stretch - implementing queue with stack class
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = Stack()
+        self.storage = LinkedList2()
     
     def __len__(self):
         return self.size
 
     def enqueue(self, value):
-        self.storage.push(value)
+        self.storage.add_to_tail(value)
         self.size += 1
 
     def dequeue(self):
         if self.size != 0:
             self.size -= 1
-            return self.storage.pop()
+            return self.storage.remove_head()
         else:
             return None
+
+# Stretch - implementing queue with stack class
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = Stack()
+    
+#     def __len__(self):
+#         return self.size
+
+#     def enqueue(self, value):
+#         self.storage.push(value)
+#         self.size += 1
+
+#     def dequeue(self):
+#         if self.size != 0:
+#             self.size -= 1
+#             return self.storage.pop()
+#         else:
+#             return None
